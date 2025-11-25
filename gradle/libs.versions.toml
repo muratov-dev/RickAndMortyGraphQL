@@ -31,6 +31,8 @@ timber = "5.0.1"
 googleServices = "4.4.4"
 firebaseBom = "34.6.0"
 crashlytics = "3.0.6"
+appcompat = "1.7.1"
+material = "1.13.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -75,6 +77,8 @@ timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics-ndk" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [bundles]
 okhttp = ["okhttp", "okhttp-logging"]

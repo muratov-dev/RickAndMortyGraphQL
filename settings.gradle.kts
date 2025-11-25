@@ -25,3 +25,4 @@ dependencyResolutionManagement {
 rootProject.name = "RickAndMortyGraphQL"
 include(":app")
 include(":core:ui")
+include(":core:network")

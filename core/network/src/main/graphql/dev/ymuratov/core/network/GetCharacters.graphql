@@ -1,0 +1,14 @@
+{
+    characters{
+        results{
+            id
+            name
+            location{
+                name
+            }
+            status
+            species
+            gender
+        }
+    }
+}
