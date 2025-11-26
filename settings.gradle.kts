@@ -26,3 +26,4 @@ rootProject.name = "RickAndMortyGraphQL"
 include(":app")
 include(":core:ui")
 include(":core:network")
+include(":core:database")
