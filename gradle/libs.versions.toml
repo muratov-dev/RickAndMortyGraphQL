@@ -18,7 +18,7 @@ ksp = "2.3.3"
 serialization = "1.9.0"
 okhttp = "5.3.2"
 apollo = "4.3.3"
-room = "2.8.4"
+paging = "3.3.6"
 
 # UI
 navigation = "1.0.0"
@@ -33,6 +33,7 @@ firebaseBom = "34.6.0"
 crashlytics = "3.0.6"
 appcompat = "1.7.1"
 material = "1.13.0"
+jetbrainsKotlinJvm = "2.2.21"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -61,9 +62,8 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 okhttp-logging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 apollo-runtime = { module = "com.apollographql.apollo:apollo-runtime", version.ref = "apollo" }
-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
+paging-compose = { module = "androidx.paging:paging-compose", version.ref = "paging" }
 
 # UI
 coil = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
@@ -82,7 +82,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 
 [bundles]
 okhttp = ["okhttp", "okhttp-logging"]
-room = ["room-runtime", "room-ktx"]
+paging = ["paging-runtime", "paging-compose"]
 navigation = ["androidx-navigation3-runtime", "androidx-navigation3-ui"]
 firebase = ["firebase-analytics", "firebase-crashlytics"]
 
@@ -97,4 +97,5 @@ apollo = { id = "com.apollographql.apollo", version.ref = "apollo" }
 google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
 crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "crashlytics" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 

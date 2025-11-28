@@ -6,8 +6,6 @@ plugins {
     alias(libs.plugins.apollo)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.devtools.ksp)
-    alias(libs.plugins.google.services)
-    alias(libs.plugins.crashlytics)
 }
 
 android {
@@ -52,6 +50,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:ui"))
+    implementation(project(":feature:characters"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -70,8 +71,6 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.bundles.okhttp)
     implementation(libs.apollo.runtime)
-    ksp(libs.room.compiler)
-    implementation(libs.bundles.room)
 
     //UI
     implementation(libs.coil)
@@ -79,10 +78,6 @@ dependencies {
 
     //Logging
     implementation(libs.timber)
-
-    //Firebase
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.bundles.firebase)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

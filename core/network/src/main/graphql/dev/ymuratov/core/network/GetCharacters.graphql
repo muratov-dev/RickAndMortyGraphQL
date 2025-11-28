@@ -1,9 +1,13 @@
-{
-    characters{
-        results{
+query GetCharacters($page: Int, $name: String) {
+    characters(page: $page, filter: {name: $name}) {
+        info{
+            next
+            prev
+        }
+        results {
             id
             name
-            location{
+            location {
                 name
             }
             status
