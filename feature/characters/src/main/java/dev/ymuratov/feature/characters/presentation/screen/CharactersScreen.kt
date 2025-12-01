@@ -1,5 +1,6 @@
 package dev.ymuratov.feature.characters.presentation.screen
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,13 +22,21 @@ import dev.ymuratov.feature.characters.presentation.model.CharactersState
 import dev.ymuratov.feature.characters.presentation.viewmodel.CharacterViewModel
 
 @Composable
-fun CharactersContainer(modifier: Modifier = Modifier, viewModel: CharacterViewModel = hiltViewModel()) {
+fun CharactersContainer(
+    modifier: Modifier = Modifier,
+    viewModel: CharacterViewModel = hiltViewModel(),
+    onClick: (String) -> Unit = {}
+) {
     val state by viewModel.viewState.collectAsStateWithLifecycle()
-    CharactersContent(modifier = modifier, state = state)
+    CharactersContent(modifier = modifier, state = state, onItemClick = onClick)
 }
 
 @Composable
-private fun CharactersContent(modifier: Modifier = Modifier, state: CharactersState = CharactersState()) {
+private fun CharactersContent(
+    modifier: Modifier = Modifier,
+    state: CharactersState = CharactersState(),
+    onItemClick: (String) -> Unit = {}
+) {
     val characters = state.charactersFlow.collectAsLazyPagingItems()
     Scaffold(modifier = modifier) { innerPadding ->
         LazyColumn(
@@ -39,9 +48,12 @@ private fun CharactersContent(modifier: Modifier = Modifier, state: CharactersSt
                 val item = characters[index] ?: return@items
                 Text(
                     text = item.name,
-                    color = Color.White,
+                    color = Color.Black,
                     modifier = Modifier
                         .fillMaxWidth()
+                        .clickable {
+                            onItemClick(item.id)
+                        }
                         .padding(horizontal = 12.dp, vertical = 8.dp)
                 )
             }

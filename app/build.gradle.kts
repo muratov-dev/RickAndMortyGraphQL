@@ -50,8 +50,10 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:navigation"))
     implementation(project(":core:ui"))
     implementation(project(":feature:characters"))
+    implementation(project(":feature:character_info"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

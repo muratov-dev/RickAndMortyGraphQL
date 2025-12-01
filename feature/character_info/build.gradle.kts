@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "dev.ymuratov.feature.characters"
+    namespace = "dev.ymuratov.feature.character_info"
     compileSdk {
         version = release(36)
     }
