@@ -7,13 +7,16 @@ import com.apollographql.apollo.api.Optional
 import dev.ymuratov.core.network.GetCharactersQuery
 
 class CharactersPagingSource(
-    private val apolloClient: ApolloClient
+    private val apolloClient: ApolloClient,
+    private val searchQuery: String,
 ) : PagingSource<Int, GetCharactersQuery.Result>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, GetCharactersQuery.Result> {
         val page = params.key ?: 1
         return try {
-            val response = apolloClient.query(GetCharactersQuery(page = Optional.present(page))).execute()
+            val response =
+                apolloClient.query(GetCharactersQuery(page = Optional.present(page), name = Optional.present(searchQuery)))
+                    .execute()
             val characters = response.data?.characters ?: return LoadResult.Page(
                 data = emptyList(), prevKey = null, nextKey = null
             )

@@ -21,7 +21,7 @@ class CharactersRepositoryImpl @Inject constructor(
     override suspend fun fetchCharacters(searchQuery: String): Flow<PagingData<CharacterModel>> {
         return Pager(
             config = PagingConfig(pageSize = 20, enablePlaceholders = false),
-            pagingSourceFactory = { CharactersPagingSource(apolloClient) }).flow.map { data ->
+            pagingSourceFactory = { CharactersPagingSource(apolloClient, searchQuery) }).flow.map { data ->
             data.map { dto -> dto.toDomain() }
         }
     }

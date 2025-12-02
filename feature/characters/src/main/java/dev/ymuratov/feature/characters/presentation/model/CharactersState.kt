@@ -8,5 +8,6 @@ import kotlinx.coroutines.flow.emptyFlow
 
 @Immutable
 data class CharactersState(
+    val searchQuery: String = "",
     val charactersFlow: Flow<PagingData<CharacterModel>> = emptyFlow()
 )
