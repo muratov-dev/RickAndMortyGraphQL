@@ -14,7 +14,7 @@ import dev.ymuratov.navigation.RaMNavigator
 
 @Module
 @InstallIn(ActivityRetainedComponent::class)
-object CharacterInfoModule {
+object CharacterInfoNavigationModule {
 
     @IntoSet
     @Provides
