@@ -11,5 +11,6 @@ fun GetCharactersQuery.Result.toDomain(): CharacterModel {
         name = name ?: "",
         species = species ?: "",
         status = status ?: "",
+        image = image ?: ""
     )
 }
