@@ -1,30 +1,36 @@
 package dev.ymuratov.feature.character_info.presentation.viewmodel
 
-import android.util.Log
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.ymuratov.core.network.NetworkResult
+import dev.ymuratov.core.ui.viewmodel.BaseViewModel
 import dev.ymuratov.feature.character_info.domain.repository.CharacterInfoRepository
+import dev.ymuratov.feature.character_info.presentation.model.CharacterInfoAction
+import dev.ymuratov.feature.character_info.presentation.model.CharacterInfoEvent
+import dev.ymuratov.feature.character_info.presentation.model.CharacterInfoState
 import dev.ymuratov.navigation.Destination
-import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel(assistedFactory = CharacterInfoViewModel.Factory::class)
 class CharacterInfoViewModel @AssistedInject constructor(
-    @Assisted val navKey: Destination.CharacterInfoScreen,
-    private val repository: CharacterInfoRepository
-): ViewModel() {
+    @Assisted val navKey: Destination.CharacterInfoScreen, private val repository: CharacterInfoRepository
+) : BaseViewModel<CharacterInfoState, CharacterInfoEvent, CharacterInfoAction>(CharacterInfoState()) {
 
-    init {
-        viewModelScope.launch {
-            val characterName = repository.fetchCharacterInfo(navKey.id)
-            if (characterName is NetworkResult.Success){
-                Log.d("CharacterInfoViewModel", characterName.data?.name.toString())
-            }
+    override fun obtainEvent(viewEvent: CharacterInfoEvent) {
+        when (viewEvent) {
+            CharacterInfoEvent.OnDataFetch -> fetchData()
+            CharacterInfoEvent.OnNavigateUp -> sendAction(CharacterInfoAction.NavigateUp)
+        }
+    }
+
+    private fun fetchData() = viewModelScoped {
+        updateViewState { copy(isLoading = true) }
+        val result = repository.fetchCharacterInfo(navKey.id)
+        if (result is NetworkResult.Success) {
+            updateViewState { copy(isLoading = false, characterInfo = result.data) }
+        } else {
+            updateViewState { copy(isLoading = false) }
         }
     }
 

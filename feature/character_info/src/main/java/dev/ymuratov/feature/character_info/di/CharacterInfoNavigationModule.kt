@@ -23,9 +23,8 @@ object CharacterInfoNavigationModule {
             val viewModel = hiltViewModel<CharacterInfoViewModel, CharacterInfoViewModel.Factory>(
                 creationCallback = { factory ->
                     factory.create(key)
-                }
-            )
-            CharacterInfoContainer(viewModel = viewModel)
+                })
+            CharacterInfoContainer(viewModel = viewModel) { navigator.goBack() }
         }
     }
 }

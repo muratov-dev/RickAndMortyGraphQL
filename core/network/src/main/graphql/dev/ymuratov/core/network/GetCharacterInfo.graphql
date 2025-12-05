@@ -7,16 +7,22 @@ query GetCharacterInfo($id:ID!) {
         type
         gender
         image
-        created
         origin{
             name
         }
         location{
             name
+            type
+            dimension
+            residents{
+                id
+                image
+            }
         }
         episode{
             name
             air_date
+            episode
         }
     }
 }
