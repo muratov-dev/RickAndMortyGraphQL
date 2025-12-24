@@ -9,7 +9,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 
 @Composable
 fun RaMTheme(content: @Composable () -> Unit) {
-    val colors = RaMColors.Dark
+    val colors = RaMColors.Light
     val typography = RaMTypography()
     val defaultTextStyle = typography.textRegular
 
@@ -23,8 +23,8 @@ fun RaMTheme(content: @Composable () -> Unit) {
                 onSurface = RaMTheme.colors.textPrimary,
                 surface = RaMTheme.colors.backgroundSecondary,
                 background = RaMTheme.colors.backgroundPrimary,
-                primary = RaMTheme.colors.buttonPrimaryDefault,
-                onPrimary = RaMTheme.colors.buttonTextPrimary,
+                primary = RaMTheme.colors.iconButtonPrimaryDefault,
+                onPrimary = RaMTheme.colors.iconButtonContentPrimary,
             ), typography = Typography(), content = content
         )
     }

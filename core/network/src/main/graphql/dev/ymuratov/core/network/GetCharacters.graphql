@@ -13,6 +13,7 @@ query GetCharacters($page: Int, $name: String) {
             }
             status
             species
+            type
             gender
         }
     }

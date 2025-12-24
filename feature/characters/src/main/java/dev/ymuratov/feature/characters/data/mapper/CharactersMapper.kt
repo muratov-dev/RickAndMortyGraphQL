@@ -10,6 +10,7 @@ fun GetCharactersQuery.Result.toDomain(): CharacterModel {
         location = location?.name ?: "",
         name = name ?: "",
         species = species ?: "",
+        type = type ?: "",
         status = status ?: "",
         image = image ?: ""
     )
