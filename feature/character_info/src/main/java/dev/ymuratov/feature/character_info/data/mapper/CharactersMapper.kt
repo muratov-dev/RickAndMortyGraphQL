@@ -34,5 +34,5 @@ private fun GetCharacterInfoQuery.Location.toDomain(): LocationModel {
 }
 
 private fun GetCharacterInfoQuery.Resident.toDomain(): ResidentModel {
-    return ResidentModel(id = id ?: "", image = image ?: "")
+    return ResidentModel(id = id ?: "", image = image ?: "", name = name ?: "")
 }

@@ -17,6 +17,7 @@ query GetCharacterInfo($id:ID!) {
             residents{
                 id
                 image
+                name
             }
         }
         episode{
