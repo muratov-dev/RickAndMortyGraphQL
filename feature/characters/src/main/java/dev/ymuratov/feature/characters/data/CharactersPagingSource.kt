@@ -14,12 +14,11 @@ class CharactersPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, GetCharactersQuery.Result> {
         val page = params.key ?: 1
         return try {
-            val response =
-                apolloClient.query(GetCharactersQuery(page = Optional.present(page), name = Optional.present(searchQuery)))
-                    .execute()
-            val characters = response.data?.characters ?: return LoadResult.Page(
-                data = emptyList(), prevKey = null, nextKey = null
-            )
+            val response = apolloClient.query(
+                GetCharactersQuery(page = Optional.present(page), name = Optional.present(searchQuery))
+            ).execute()
+            val characters =
+                response.data?.characters ?: return LoadResult.Page(data = emptyList(), prevKey = null, nextKey = null)
             val items = characters.results?.filterNotNull().orEmpty()
             LoadResult.Page(data = items, prevKey = characters.info?.prev, nextKey = characters.info?.next)
         } catch (ex: Exception) {

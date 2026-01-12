@@ -92,9 +92,7 @@ private fun CharactersContent(
                 )
             ) {
                 item {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically
-                    ) {
+                    Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                         val text = AnnotatedString.Builder().apply {
                             withStyle(
                                 style = SpanStyle(

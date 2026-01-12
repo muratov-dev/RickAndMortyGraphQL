@@ -21,6 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
 import dev.ymuratov.core.ui.component.button.RaMIconButton
+import dev.ymuratov.core.ui.component.characterCardColor
 import dev.ymuratov.core.ui.component.text.RaMTagText
 import dev.ymuratov.core.ui.theme.RaMTheme
 import dev.ymuratov.feature.characters.R
@@ -28,21 +29,14 @@ import dev.ymuratov.feature.characters.domain.model.CharacterModel
 
 @Composable
 fun CharacterCard(character: CharacterModel, modifier: Modifier = Modifier, onClick: () -> Unit = {}) {
-    val addInfo = listOf(character.gender, character.status, character.species, character.type)
-
-    val colors = listOf(
-        RaMTheme.colors.backgroundCard1,
-        RaMTheme.colors.backgroundCard2,
-        RaMTheme.colors.backgroundCard3,
-        RaMTheme.colors.backgroundCard4,
-    )
-    val color = colors[character.id.toInt() % colors.size]
-    Column(modifier = modifier
-        .fillMaxWidth()
-        .clip(RoundedCornerShape(32.dp))
-        .background(color = color)
-        .clickable { onClick() }
-        .padding(vertical = 16.dp)) {
+    val traits = listOf(character.gender, character.status, character.species, character.type)
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(32.dp))
+            .background(color = characterCardColor(character.id.toInt()))
+            .clickable { onClick() }
+            .padding(vertical = 16.dp)) {
         Row(
             modifier = Modifier
                 .padding(horizontal = 16.dp)
@@ -65,7 +59,7 @@ fun CharacterCard(character: CharacterModel, modifier: Modifier = Modifier, onCl
         }
         Spacer(Modifier.size(12.dp))
         LazyRow(modifier = Modifier.fillMaxWidth(), contentPadding = PaddingValues(horizontal = 16.dp)) {
-            items(addInfo) {
+            items(traits) {
                 if (it.isNotEmpty()) {
                     RaMTagText(text = it)
                 }
