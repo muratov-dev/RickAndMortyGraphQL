@@ -4,4 +4,5 @@ sealed interface CharacterInfoEvent {
 
     data object OnDataFetch: CharacterInfoEvent
     data object OnNavigateUp: CharacterInfoEvent
+    data class OnNavigateToCharacter(val characterId: String): CharacterInfoEvent
 }

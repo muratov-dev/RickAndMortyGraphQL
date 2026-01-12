@@ -11,7 +11,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 fun RaMTheme(content: @Composable () -> Unit) {
     val colors = RaMColors.Light
     val typography = RaMTypography()
-    val defaultTextStyle = typography.textRegular
+    val defaultTextStyle = typography.textMedium
 
     CompositionLocalProvider(
         LocalRaMColors provides colors,

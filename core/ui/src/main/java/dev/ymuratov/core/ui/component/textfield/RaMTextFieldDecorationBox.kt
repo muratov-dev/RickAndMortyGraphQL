@@ -36,9 +36,7 @@ fun RaMTextFieldDecorationBox(
 ) {
     val placeholderTextStyle = RaMTheme.typography.textMedium.merge(color = colors.defaultPlaceholderColor)
 
-    Box(
-        modifier = Modifier.defaultMinSize(minHeight = RaMTextFieldDefaults.MinHeight), propagateMinConstraints = true
-    ) {
+    Box(modifier = Modifier.defaultMinSize(minHeight = RaMTextFieldDefaults.MinHeight), propagateMinConstraints = true) {
         Box(modifier = Modifier.matchParentSize(), propagateMinConstraints = true) {
             container()
         }
@@ -55,9 +53,7 @@ fun RaMTextFieldDecorationBox(
                 }
             }
 
-            Box(
-                modifier = Modifier.weight(1f, true), contentAlignment = Alignment.CenterStart
-            ) {
+            Box(modifier = Modifier.weight(1f, true), contentAlignment = Alignment.CenterStart) {
                 Box {
                     if (placeholder != null && value.isEmpty()) {
                         CompositionLocalProvider(LocalTextStyle provides placeholderTextStyle) {

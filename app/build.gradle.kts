@@ -2,8 +2,6 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.apollo)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.devtools.ksp)
 }
@@ -45,7 +43,6 @@ android {
     }
     buildFeatures {
         compose = true
-        buildConfig = true
     }
 }
 
@@ -69,23 +66,6 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.hilt.compose)
 
-    //Data
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.bundles.okhttp)
-    implementation(libs.apollo.runtime)
-
     //UI
-    implementation(libs.coil)
     implementation(libs.bundles.navigation)
-
-    //Logging
-    implementation(libs.timber)
-
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
-    debugImplementation(libs.androidx.compose.ui.tooling)
-    debugImplementation(libs.androidx.compose.ui.test.manifest)
 }

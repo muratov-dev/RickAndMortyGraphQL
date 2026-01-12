@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="character_info_last_location_title">Last Location</string>
+    <string name="character_info_residents_title">Residents</string>
+    <string name="character_info_episode_title">Episodes</string>
+</resources>

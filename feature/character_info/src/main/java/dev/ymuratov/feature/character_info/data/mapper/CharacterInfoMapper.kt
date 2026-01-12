@@ -23,16 +23,25 @@ fun GetCharacterInfoQuery.Character.toDomain(): CharacterInfoModel {
 
 private fun GetCharacterInfoQuery.Episode.toDomain(): EpisodeModel {
     return EpisodeModel(
-        airDate = air_date ?: "", episode = episode ?: "", name = name ?: ""
+        airDate = air_date ?: "",
+        episode = episode ?: "",
+        name = name ?: ""
     )
 }
 
 private fun GetCharacterInfoQuery.Location.toDomain(): LocationModel {
     return LocationModel(
-        dimension = dimension ?: "", name = name ?: "", residents = residents.map { it?.toDomain() }, type = type ?: ""
+        dimension = dimension ?: "",
+        name = name ?: "",
+        residents = residents.map { it?.toDomain() },
+        type = type ?: ""
     )
 }
 
 private fun GetCharacterInfoQuery.Resident.toDomain(): ResidentModel {
-    return ResidentModel(id = id ?: "", image = image ?: "", name = name ?: "")
+    return ResidentModel(
+        id = id ?: "",
+        image = image ?: "",
+        name = name ?: ""
+    )
 }

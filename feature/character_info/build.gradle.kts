@@ -30,6 +30,7 @@ dependencies {
     implementation(project(":core:navigation"))
     implementation(project(":core:network"))
     implementation(project(":core:ui"))
+    implementation(libs.androidx.compose.foundation.layout)
 
     //DI and compilation
     ksp(libs.hilt.compiler)

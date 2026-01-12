@@ -1,7 +1,6 @@
 package dev.ymuratov.feature.character_info.domain.model
 
 
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable

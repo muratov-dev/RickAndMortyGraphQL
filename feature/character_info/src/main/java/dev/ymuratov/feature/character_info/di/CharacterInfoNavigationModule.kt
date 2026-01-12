@@ -20,11 +20,13 @@ object CharacterInfoNavigationModule {
     @Provides
     fun provideEntryProviderInstaller(navigator: RaMNavigator): EntryProviderInstaller = {
         entry<Destination.CharacterInfoScreen> { key ->
-            val viewModel = hiltViewModel<CharacterInfoViewModel, CharacterInfoViewModel.Factory>(
-                creationCallback = { factory ->
-                    factory.create(key)
-                })
-            CharacterInfoContainer(viewModel = viewModel) { navigator.goBack() }
+            val viewModel = hiltViewModel<CharacterInfoViewModel, CharacterInfoViewModel.Factory>(creationCallback = { factory ->
+                factory.create(key)
+            })
+            CharacterInfoContainer(
+                viewModel = viewModel,
+                navigateUp = { navigator.goBack() },
+                navigateToCharacter = { navigator.goTo(Destination.CharacterInfoScreen(it)) })
         }
     }
 }

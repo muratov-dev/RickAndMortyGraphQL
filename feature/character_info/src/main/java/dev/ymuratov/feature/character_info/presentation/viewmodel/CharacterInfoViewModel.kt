@@ -21,6 +21,7 @@ class CharacterInfoViewModel @AssistedInject constructor(
         when (viewEvent) {
             CharacterInfoEvent.OnDataFetch -> fetchData()
             CharacterInfoEvent.OnNavigateUp -> sendAction(CharacterInfoAction.NavigateUp)
+            is CharacterInfoEvent.OnNavigateToCharacter -> sendAction(CharacterInfoAction.NavigateToCharacter(viewEvent.characterId))
         }
     }
 
