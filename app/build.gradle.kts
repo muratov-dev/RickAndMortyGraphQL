@@ -16,9 +16,9 @@ android {
         applicationId = "dev.ymuratov.ram_gql"
         minSdk = 26
         targetSdk = 36
-        val majorVersion = 0
+        val majorVersion = 1
         val minorVersion = 0
-        val patchVersion = 1
+        val patchVersion = 0
 
         versionCode = majorVersion * 10000 + minorVersion * 100 + patchVersion
         versionName = "$majorVersion.$minorVersion.$patchVersion"
